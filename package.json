@@ -1,0 +1,11 @@
+{
+  "name": "barebones-cljs",
+  "private": true,
+  "scripts": {
+    "dev": "clojure -M:shadow watch app",
+    "compile": "clojure -M:shadow compile app",
+    "release": "clojure -M:shadow release app",
+    "server": "clojure -M:shadow server",
+    "nrepl": "clojure -M:nrepl"
+  }
+}

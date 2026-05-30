@@ -1,0 +1,9 @@
+{:paths ["src"]
+ :deps  {thheller/shadow-cljs {:mvn/version "3.4.11"}}
+ :aliases
+ {:neil {:project {:name barebones-cljs/barebones-cljs}}
+  :shadow {:main-opts ["-m" "shadow.cljs.devtools.cli"]}
+  :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.7.0"}
+                       cider/cider-nrepl {:mvn/version "0.59.0"}
+                       refactor-nrepl/refactor-nrepl {:mvn/version "3.13.0"}}
+          :main-opts ["-m" "nrepl.cmdline" "--interactive" "--color" "--middleware" "[cider.nrepl/cider-middleware,refactor-nrepl.middleware/wrap-refactor]"]}}}
