@@ -2,10 +2,23 @@
   "name": "barebones-cljs",
   "private": true,
   "scripts": {
-    "dev": "clojure -M:shadow watch app",
-    "compile": "clojure -M:shadow compile app",
-    "release": "clojure -M:shadow release app",
+    "dev": "clojure -M:shadow watch dev",
+    "compile": "clojure -M:shadow compile dev",
+    "release": "clojure -M:shadow release release",
     "server": "clojure -M:shadow server",
-    "nrepl": "clojure -M:nrepl"
+    "nrepl": "clojure -M:nrepl",
+    "lint:clj": "clj-kondo --lint src deps.edn shadow-cljs.edn",
+    "test:e2e": "playwright test -c playwright.dev.config.ts",
+    "test:e2e:headed": "playwright test -c playwright.dev.config.ts --headed",
+    "test:e2e:release": "npm run release && mkdir -p target/release/public && cp public/index.html target/release/public/index.html && playwright test -c playwright.release.config.ts",
+    "verify": "npm run lint:clj && npm run compile && npm run test:e2e && npm run test:e2e:release"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  },
+  "dependencies": {
+    "process": "^0.11.10",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }

@@ -29,5 +29,7 @@
 /node_modules
 /public/js
 /.shadow-cljs
+/playwright-report
+/test-results
 /target
 npm-debug.log*

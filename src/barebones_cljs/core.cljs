@@ -1,16 +1,58 @@
-(ns barebones-cljs.core)
+(ns barebones-cljs.core
+  (:require
+   [clojure.string :as str]
+   [reagent.core :as r]
+   [reagent.dom.client :as rdom]))
 
-(defn render []
-  (let [app (.getElementById js/document "app")]
-    (set! (.-innerHTML app)
-          "<section class=\"app-shell\">
-             <p class=\"eyebrow\">shadow-cljs + nREPL</p>
-             <h1>Barebones CLJS</h1>
-             <p>Edit <code>src/barebones_cljs/core.cljs</code> and save to hot reload.</p>
-             <button id=\"hello\" type=\"button\">Click from CLJS</button>
-           </section>")
-    (when-let [button (.getElementById js/document "hello")]
-      (.addEventListener button "click" #(js/alert "Hello from ClojureScript")))))
+(defonce app-state
+  (r/atom {:count 0
+           :enabled? false
+           :name ""}))
+
+(defonce root
+  (delay (rdom/create-root (.getElementById js/document "app"))))
+
+(defn counter-panel [{:keys [count]}]
+  [:section.panel {:aria-labelledby "counter-heading"}
+   [:h2 {:id "counter-heading"} "Counter"]
+   [:p.metric
+    [:span "Count: "]
+    [:strong count]]
+   [:button {:type "button"
+             :on-click #(swap! app-state update :count inc)}
+    "Increment count"]])
+
+(defn status-panel [{:keys [enabled?]}]
+  [:section.panel {:aria-labelledby "status-heading"}
+   [:h2 {:id "status-heading"} "Status"]
+   [:p.metric
+    [:span "Status: "]
+    [:strong (if enabled? "Enabled" "Disabled")]]
+   [:button {:type "button"
+             :on-click #(swap! app-state update :enabled? not)}
+    (if enabled? "Disable feature" "Enable feature")]])
+
+(defn greeting-panel [{:keys [name]}]
+  (let [display-name (if (seq (str/trim name)) name "friend")]
+    [:section.panel {:aria-labelledby "greeting-heading"}
+     [:h2 {:id "greeting-heading"} "Greeting"]
+     [:label {:for "name-input"} "Name"]
+     [:input {:id "name-input"
+              :type "text"
+              :value name
+              :placeholder "Ada Lovelace"
+              :on-change #(swap! app-state assoc :name (.. % -target -value))}]
+     [:p.metric "Hello, " [:strong display-name] "!"]]))
+
+(defn app []
+  (let [state @app-state]
+    [:section.app-shell
+     [:p.eyebrow "shadow-cljs + nREPL"]
+     [:h1 "Barebones CLJS"]
+     [:p "A tiny Reagent app with enough behavior to exercise fast browser tests."]
+     [counter-panel state]
+     [status-panel state]
+     [greeting-panel state]]))
 
 (defn ^:dev/after-load init []
-  (render))
+  (rdom/render @root [app]))
