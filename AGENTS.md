@@ -18,7 +18,7 @@ When using the `tdd` skill in this project:
 - Use user-visible locators: `getByRole`, `getByLabel`, and visible text.
 - Do not add CLJS Playwright tests, visual snapshots, broad test-only browser globals, or implementation-detail assertions.
 - Use the REPL only for debugging/probing, not as the test runner of record.
-- For RED, write one failing semantic browser test for one observable behavior.
+- For RED, write at least one failing semantic browser test for one observable behavior, consider edge cases that might be reached where code might fail.
 - For GREEN, make the smallest ClojureScript/app change that passes.
 - For REFACTOR, improve design only while tests are green.
 
