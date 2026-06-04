@@ -1,5 +1,5 @@
 {
-  "name": "barebones-cljs",
+  "name": "{{artifact/id}}",
   "private": true,
   "scripts": {
     "dev": "clojure -M:shadow watch dev",

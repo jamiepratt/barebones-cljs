@@ -3,7 +3,7 @@ import { expect, type Page } from "@playwright/test";
 export async function runAppSmoke(page: Page) {
   await page.goto("/index.html");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Barebones CLJS" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "{{display-name}}" })).toBeVisible();
   await expect(page.getByText("shadow-cljs + nREPL")).toBeVisible();
   await expect(page.getByText("A tiny Reagent app with enough behavior")).toBeVisible();
 

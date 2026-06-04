@@ -1,4 +1,4 @@
-(ns barebones-cljs.core
+(ns {{top/ns}}.{{main/ns}}.core
   (:require
    [clojure.string :as str]
    [reagent.core :as r]
@@ -48,7 +48,7 @@
   (let [state @app-state]
     [:section.app-shell
      [:p.eyebrow "shadow-cljs + nREPL"]
-     [:h1 "Barebones CLJS"]
+     [:h1 "{{display-name}}"]
      [:p "A tiny Reagent app with enough behavior to exercise fast browser tests."]
      [counter-panel state]
      [status-panel state]

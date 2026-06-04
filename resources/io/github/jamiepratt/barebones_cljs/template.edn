@@ -1,0 +1,9 @@
+{:description "Small Shadow CLJS + Reagent app with browser-first tests."
+ :data-fn jamiepratt.barebones-cljs/data-fn
+ :transform [["src" "src/{{top/file}}/{{main/file}}"
+              {"core.cljs.tmpl" "core.cljs"}
+              :only]
+             ["edn" ""
+              {"deps.edn.tmpl" "deps.edn"
+               "shadow-cljs.edn.tmpl" "shadow-cljs.edn"}
+              :only]]}

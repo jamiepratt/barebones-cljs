@@ -8,10 +8,10 @@
    :output-dir "public/js"
    :asset-path "/js"
    :modules
-   {:main {:init-fn barebones-cljs.core/init}}}
+   {:main {:init-fn {{top/ns}}.{{main/ns}}.core/init}}}
   :release
   {:target :browser
    :output-dir "target/release/public/js"
    :asset-path "/js"
    :modules
-   {:main {:init-fn barebones-cljs.core/init}}}}}
+   {:main {:init-fn {{top/ns}}.{{main/ns}}.core/init}}}}}

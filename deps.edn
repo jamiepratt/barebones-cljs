@@ -1,6 +1,28 @@
-{:paths ["src"]
- :deps  {thheller/shadow-cljs {:mvn/version "3.4.11"}
-         reagent/reagent {:mvn/version "2.0.1"}}
+{:paths ["src" "resources"]
  :aliases
- {:neil {:project {:name barebones-cljs/barebones-cljs}}
-  :shadow {:main-opts ["-m" "shadow.cljs.devtools.cli"]}}}
+ {:test
+  {:extra-paths ["test"]
+   :extra-deps {io.github.cognitect-labs/test-runner
+                {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                io.github.seancorfield/deps-new
+                {:git/url "https://github.com/seancorfield/deps-new"
+                 :git/tag "v0.10.3"
+                 :git/sha "2c012c42185f9f14448f561481e6b39088e0fc82"}}
+   :main-opts ["-m" "cognitect.test-runner"]}
+  :build
+  {:extra-paths ["src" "resources"]
+   :deps {io.github.clojure/tools.build {:mvn/version "0.10.11"}
+          io.github.seancorfield/deps-new
+          {:git/url "https://github.com/seancorfield/deps-new"
+           :git/tag "v0.10.3"
+           :git/sha "2c012c42185f9f14448f561481e6b39088e0fc82"}}
+   :ns-default build}
+  :new
+  {:extra-paths ["src" "resources"]
+   :deps {io.github.seancorfield/deps-new
+          {:git/url "https://github.com/seancorfield/deps-new"
+           :git/tag "v0.10.3"
+           :git/sha "2c012c42185f9f14448f561481e6b39088e0fc82"}}
+   :ns-default org.corfield.new
+   :exec-args {:src-dirs ["resources/io/github"]}}
+  :neil {:project {:name io.github.jamiepratt/barebones-cljs}}}}
