@@ -6,6 +6,8 @@ Be extremely concise, sacrifice grammar for concision.
 
 - Use `clj-nrepl-eval --discover-ports` to find running nREPLs.
 - Use `clj-nrepl-eval -p <port> "<form>"` for REPL evaluation and test probing.
+- Editors like Calva often inject nREPL/CIDER deps with `-Sdeps` when jack-in starts Shadow. Do not add project aliases just for editor REPL tooling.
+- If Codex must start Shadow watch and needs that REPL tooling, inject it in the command, e.g. `clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version "1.0.0"} cider/cider-nrepl {:mvn/version "0.28.7"}}}' -M:shadow watch dev`.
 - After editing Clojure or ClojureScript files, run `clj-paren-repair <changed-files>` before tests.
 - Prefer `clj-paren-repair` over hand-editing unbalanced delimiters.
 

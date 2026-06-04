@@ -6,7 +6,6 @@
     "compile": "clojure -M:shadow compile dev",
     "release": "clojure -M:shadow release release",
     "server": "clojure -M:shadow server",
-    "nrepl": "clojure -M:nrepl",
     "lint:clj": "clj-kondo --lint src deps.edn shadow-cljs.edn",
     "test:e2e": "playwright test -c playwright.dev.config.ts",
     "test:e2e:headed": "playwright test -c playwright.dev.config.ts --headed",
