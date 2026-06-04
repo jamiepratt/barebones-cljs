@@ -4,6 +4,12 @@ Small ClojureScript starter using Shadow CLJS.
 
 ## Development
 
+Install project dependencies:
+
+```sh
+npm install
+```
+
 Start the Reagent browser build, dev server, and Shadow nREPL:
 
 ```sh
@@ -21,6 +27,32 @@ Compile once:
 ```sh
 npm run compile
 ```
+
+## Tooling
+
+Required for normal development: Java, the Clojure CLI (`clojure`), Node.js, and npm. On macOS, prefer the official/Homebrew installs:
+
+```sh
+brew install --cask temurin@25
+brew install clojure/tools/clojure
+```
+
+Use the [Node.js download page](https://nodejs.org/en/download) or a Node version manager for Node/npm.
+
+Recommended for full local verification:
+
+```sh
+brew install borkdude/brew/clj-kondo
+npx playwright install chromium
+```
+
+`clj-kondo` is required by `npm run verify`. Playwright's Chromium browser binary is required for E2E tests. `clojure-lsp` is optional, but recommended for editor diagnostics, definitions, references, and clean namespace checks:
+
+```sh
+brew install clojure-lsp/brew/clojure-lsp-native
+```
+
+If you do not use Homebrew, see the official install docs for [Clojure CLI](https://clojure.org/guides/install_clojure), [clj-kondo](https://github.com/clj-kondo/clj-kondo#installation), [clojure-lsp](https://clojure-lsp.io/installation/), and [Playwright browsers](https://playwright.dev/docs/browsers).
 
 ## Tests
 

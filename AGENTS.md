@@ -4,6 +4,10 @@ Be extremely concise, sacrifice grammar for concision.
 
 ## Clojure Tooling
 
+- Use `clojure-lsp` when available for static Clojure/CLJS help: diagnostics, definitions, references, rename impact, symbols, and clean namespace checks.
+- Prefer LSP before broad refactors or renames; use it to find references and stale/missing requires.
+- Use LSP as file/project analysis only. Use nREPL, `npm run compile`, and browser E2E tests for runtime/compiler/browser truth.
+- If `clojure-lsp` is unavailable, do not block; fall back to `rg`, lint, compile, tests, and nREPL probing.
 - Use `clj-nrepl-eval --discover-ports` to find running nREPLs.
 - Use `clj-nrepl-eval -p <port> "<form>"` for REPL evaluation and test probing.
 - Editors like Calva often inject nREPL/CIDER deps with `-Sdeps` when jack-in starts Shadow. Do not add project aliases just for editor REPL tooling.

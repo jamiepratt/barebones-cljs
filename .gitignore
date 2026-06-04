@@ -9,6 +9,8 @@
 .hgignore
 .java-version
 .lein-*
+!.lsp/
+!.lsp/config.edn
 .lsp/.cache
 .lsp/sqlite.db
 .nrepl-history
